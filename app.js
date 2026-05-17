@@ -5,10 +5,11 @@ export default (express, bodyParser, createReadStream, crypto, http) => {
   app.use(bodyParser.json());
 
   app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,OPTIONS,DELETE');
-    next();
-  });
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,OPTIONS,DELETE');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  next();
+});
 
   app.use((req, res, next) => {
     if (!req.path.endsWith('/')) {
